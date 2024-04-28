@@ -1,0 +1,123 @@
+Layout: 
+ container,
+ box-content,
+ box-border,
+ block,
+ inline-block,
+ inline,
+ flex,
+ grid,
+ hidden,
+ w-screen,
+ h-screen,
+ w-full,
+ h-full,
+ w-auto,
+ h-auto.
+
+Flexbox: 
+ flex,
+ flex-row,
+ flex-row-reverse,
+ flex-col,
+ flex-col-reverse,
+ flex-wrap,
+ flex-wrap-reverse,
+ items-start,
+ items-end,
+ items-center,
+ items-baseline,
+ items-stretch,
+ justify-start,
+ justify-end,
+ justify-center,
+ justify-between,
+ justify-around,
+ justify-evenly.
+
+Grid: 
+ grid,
+ grid-cols-1 até grid-cols-12,
+ grid-rows-1 até grid-rows-6,
+ gap-0 até gap-96.
+
+Espaçamento: p-0 até p-96 (padding),
+ m-0 até m-96 (margin),
+ space-x-0 até space-x-96 (espaço horizontal entre elementos filhos de um container flex ou grid),
+ space-y-0 até space-y-96 (espaço vertical entre elementos filhos de um container flex ou grid).
+
+Tipografia: 
+ font-sans,
+ font-serif,
+ font-mono,
+ text-xs até text-9xl,
+ font-thin até font-black,
+ text-left,
+ text-center,
+ text-right,
+ text-justify,
+ uppercase,
+ lowercase,
+ capitalize,
+ normal-case.
+
+Cores: 
+ text-transparent,
+ text-current,
+ text-black,
+ text-white,
+ text-gray-100 até text-gray-900,
+ bg-transparent,
+ bg-current,
+ bg-black,
+ bg-white,
+ bg-gray-100 até bg-gray-900 (e o mesmo para outras cores como red,
+ yellow,
+ green,
+ blue,
+ indigo,
+ purple,
+ pink).
+
+Bordas: 
+ border,
+ border-0 até border-8,
+ border-transparent,
+ border-current,
+ border-black,
+ border-white,
+ border-gray-100 até border-gray-900,
+ rounded,
+ rounded-md,
+ rounded-lg,
+ rounded-full.
+
+Efeitos: 
+ shadow,
+ shadow-md,
+ shadow-lg,
+ shadow-xl,
+ shadow-2xl,
+ shadow-inner,
+ shadow-none.
+
+Outros: 
+ cursor-auto,
+ cursor-default,
+ cursor-pointer,
+ cursor-wait,
+ cursor-text,
+ cursor-move,
+ cursor-not-allowed,
+ static,
+ fixed,
+ absolute,
+ relative,
+ sticky,
+ inset-0,
+ inset-y-0,
+ inset-x-0,
+ top-0,
+ right-0,
+ bottom-0,
+ left-0.

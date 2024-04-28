@@ -1,14 +1,21 @@
-// import { Button } from "@/components/ui/button";
-import Link from 'next/link'
+'use client'
+import React, { useState } from 'react'
 
-const Home = () => {
+const Login = () => {
+	const [loginForm, setLoginForm] = useState({ email: '', password: '' })
+
+	const handleChange = (e: any, field: string) => {
+		setLoginForm({ ...loginForm, [field]: e.target.value })
+	}
+
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
-			<h2 className='mb-3 text-2xl font-semibold'>
-				<Link href='/login'>{/* <Button>Navegar para outra página</Button> */}</Link>
-			</h2>
-		</main>
+		<div>
+			<h1>Página Login</h1>
+			<p>Esta é a página Login do meu aplicativo Next.js.</p>
+			{/* <Button onClick={(e) => handleChange(e, 'email')}>Navegar para outra página</Button>
+			<Button onClick={(e) => handleChange(e, 'password')}>Navegar para outra página</Button> */}
+		</div>
 	)
 }
 
-export default Home
+export default Login
