@@ -3,32 +3,36 @@ import { Button, PasswordInput, TextInput } from '@mantine/core'
 import Link from 'next/link'
 import { AtIcon, LockIcon, UserIcon } from '@/components/global/SystemIcons/SystemIcons'
 import { RegisterFormType } from '@/types/auth-types'
-import { validateRegister } from './register.validation'
+import { validateRegisterForm } from '../../validations/auth.validation'
+
+const DEFAULT_ERROR_FIELD_VALUE = new Map()
+const DEFAULT_REGISTER_FORM = { username: '', email: '', password: '', confirmPassword: '' }
 
 const RegisterPage = () => {
-	const [registerForm, setRegisterForm] = useState<RegisterFormType>({ username: '', email: '', password: '', confirmPassword: '' })
-	const [errorFields, setErrorFields] = useState<Record<string, string | null>>({ newPassword: null })
+	const [registerForm, setRegisterForm] = useState<RegisterFormType>(DEFAULT_REGISTER_FORM)
+	const [errorFields, setErrorFields] = useState<Map<string, string>>(DEFAULT_ERROR_FIELD_VALUE)
 
 	const handleChangeRegisterForm = (value: string, field: string) => {
-		if (['password', 'confirmPassword'].includes(field) && errorFields.newPassword) {
-			setErrorFields({ ...errorFields, newPassword: null })
+		if (field && errorFields && errorFields.has(field)) {
+			const newErrorFields = new Map(errorFields)
+			newErrorFields.delete(field)
+			setErrorFields(newErrorFields)
 		}
-		setRegisterForm({ ...registerForm, [field]: value })
+		setRegisterForm((prevState) => ({ ...prevState, [field]: value }))
 	}
 
 	const onSubmitRegisterForm = () => {
-		const error = validateRegister(registerForm)
-		console.log(error)
-		// if (error) {
-		// 	setErrorFields({ newPassword: error })
-		// 	return
-		// }
-		setErrorFields({ newPassword: null })
+		const errors = validateRegisterForm(registerForm)
+		if (errors) {
+			setErrorFields(errors)
+		} else {
+			setErrorFields(DEFAULT_ERROR_FIELD_VALUE)
+		}
 	}
 
 	return (
 		<div className='flex h-screen w-screen items-center justify-center '>
-			<div className='grid h-2/3 w-1/2 grid-flow-row grid-cols-1 items-center justify-items-center gap-5 shadow-md'>
+			<div className='grid h-3/4 w-1/2 grid-flow-row grid-cols-1 items-center justify-items-center gap-5 shadow-md'>
 				<h1 className='mb-4 text-2xl font-bold'>Cadastre sua conta</h1>
 				<TextInput
 					className='w-full max-w-xs'
@@ -39,6 +43,7 @@ const RegisterPage = () => {
 					value={registerForm.username}
 					onChange={(event) => handleChangeRegisterForm(event.currentTarget.value, 'username')}
 					autoComplete='username'
+					error={errorFields?.get('username')}
 				/>
 				<TextInput
 					className='w-full max-w-xs'
@@ -49,6 +54,7 @@ const RegisterPage = () => {
 					value={registerForm.email}
 					onChange={(event) => handleChangeRegisterForm(event.currentTarget.value, 'email')}
 					autoComplete='email'
+					error={errorFields?.get('email')}
 				/>
 				<PasswordInput
 					className='w-full max-w-xs'
@@ -59,6 +65,7 @@ const RegisterPage = () => {
 					value={registerForm.password}
 					onChange={(event) => handleChangeRegisterForm(event.currentTarget.value, 'password')}
 					autoComplete='new-password'
+					error={errorFields?.get('password')}
 				/>
 				<PasswordInput
 					className='w-full max-w-xs'
@@ -66,10 +73,10 @@ const RegisterPage = () => {
 					leftSection={<LockIcon size={16} />}
 					label={<span className='font-bold'>Confirmação de senha</span>}
 					placeholder='Confirmação de senha'
-					value={registerForm.confirmPassword}
+					value={registerForm?.confirmPassword}
 					onChange={(event) => handleChangeRegisterForm(event.currentTarget.value, 'confirmPassword')}
 					autoComplete='new-password'
-					error={errorFields.newPassword}
+					error={errorFields?.get('confirmPassword')}
 				/>
 				<Button color='blue' mt='md' radius='md' onClick={onSubmitRegisterForm}>
 					Cadastrar
