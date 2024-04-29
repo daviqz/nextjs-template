@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { ActionIcon } from '@mantine/core'
+import { FlareIcon, MoonStartsIcon } from '../SystemIcons/SystemIcons'
 
 type LightDarkModeSwitchProps = {
 	value: 'light' | 'dark'
@@ -11,14 +12,16 @@ const LightDarkModeSwitch: FC<LightDarkModeSwitchProps> = ({ value, onChange }) 
 		onChange(value)
 	}
 	return (
-		<ActionIcon
-			variant='outline'
-			color={value === 'dark' ? 'blue' : 'yellow'}
-			onClick={() => onChangeThemeType(value === 'dark' ? 'light' : 'dark')}
-			title='Toggle color scheme'
-		>
-			{value === 'dark' ? 'light' : 'dark'}
-		</ActionIcon>
+		<div className='absolute right-5 top-2'>
+			<ActionIcon
+				variant='outline'
+				color={value === 'dark' ? 'blue' : 'yellow'}
+				onClick={() => onChangeThemeType(value === 'dark' ? 'light' : 'dark')}
+				title='Toggle color scheme'
+			>
+				{value === 'dark' ? <FlareIcon size={16} /> : <MoonStartsIcon size={16} />}
+			</ActionIcon>
+		</div>
 	)
 }
 

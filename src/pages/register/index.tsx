@@ -31,9 +31,9 @@ const RegisterPage = () => {
 	}
 
 	return (
-		<div className='flex h-screen w-screen items-center justify-center '>
+		<div className='flex h-screen w-screen items-center justify-center'>
 			<div className='grid h-3/4 w-1/2 grid-flow-row grid-cols-1 items-center justify-items-center gap-5 shadow-md'>
-				<h1 className='mb-4 text-2xl font-bold'>Cadastre sua conta</h1>
+				<h1 className='text-2xl font-bold'>Cadastre sua conta</h1>
 				<TextInput
 					className='w-full max-w-xs'
 					leftSectionPointerEvents='none'
@@ -81,7 +81,7 @@ const RegisterPage = () => {
 				<Button color='blue' mt='md' radius='md' onClick={onSubmitRegisterForm}>
 					Cadastrar
 				</Button>
-				<Link href='/login' className='mb-5 mt-8 flex justify-center text-center text-sm'>
+				<Link href='/login' className='mt-8 flex justify-center text-center text-sm'>
 					Já possui uma conta?
 					<span className='ml-1 font-bold text-blue-500 hover:underline'>Voltar para o login</span>
 				</Link>
