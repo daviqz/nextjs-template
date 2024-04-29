@@ -17,9 +17,9 @@ const LightDarkModeSwitch: FC<LightDarkModeSwitchProps> = ({ value, onChange }) 
 				variant='outline'
 				color={value === 'dark' ? 'blue' : 'yellow'}
 				onClick={() => onChangeThemeType(value === 'dark' ? 'light' : 'dark')}
-				title='Toggle color scheme'
+				title={`Trocar tema para ${value === 'dark' ? 'claro' : 'escuro'}`}
 			>
-				{value === 'dark' ? <FlareIcon size={16} /> : <MoonStartsIcon size={16} />}
+				{value === 'light' ? <FlareIcon size={16} /> : <MoonStartsIcon size={16} />}
 			</ActionIcon>
 		</div>
 	)
