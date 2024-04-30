@@ -1,28 +1,24 @@
-import React, { FC } from 'react'
-import { ActionIcon } from '@mantine/core'
-import { FlareIcon, MoonStartsIcon } from '../SystemIcons/SystemIcons'
+'use client'
 
-type LightDarkModeSwitchProps = {
-	value: 'light' | 'dark'
-	onChange: (value: 'light' | 'dark') => void
-}
+import { ActionIcon, useMantineColorScheme, useComputedColorScheme } from '@mantine/core'
+import { IconSun, IconMoon } from '@tabler/icons-react'
 
-const LightDarkModeSwitch: FC<LightDarkModeSwitchProps> = ({ value, onChange }) => {
-	const onChangeThemeType = (value: 'light' | 'dark') => {
-		onChange(value)
-	}
+function LightDarkModeSwitch() {
+	const { setColorScheme } = useMantineColorScheme()
+	const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
+
 	return (
 		<div className='absolute right-5 top-2'>
 			<ActionIcon
-				variant='outline'
-				color={value === 'dark' ? 'blue' : 'yellow'}
-				onClick={() => onChangeThemeType(value === 'dark' ? 'light' : 'dark')}
-				title={`Trocar tema para ${value === 'dark' ? 'claro' : 'escuro'}`}
+				onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+				variant='default'
+				size='xl'
+				aria-label='Toggle color scheme'
 			>
-				{value === 'light' ? <FlareIcon size={16} /> : <MoonStartsIcon size={16} />}
+				<IconSun stroke={1.5} />
+				<IconMoon stroke={1.5} />
 			</ActionIcon>
 		</div>
 	)
 }
-
 export { LightDarkModeSwitch }
