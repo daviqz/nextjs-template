@@ -31,13 +31,16 @@ const LoginForm = () => {
 		if (errors) {
 			setErrorFields(errors)
 		} else {
-			fetchData('/auth/login', loginForm).then(() => {
-				console.log('TODO')
-			}).catch((error) => {
-				console.error(error)
-			}).finally(() => {
-				console.log('finally')
-			}
+			fetchData('/auth/login', loginForm)
+				.then(() => {
+					console.log('TODO')
+				})
+				.catch((error) => {
+					console.error(error)
+				})
+				.finally(() => {
+					console.log('finally')
+				})
 		}
 	}
 
