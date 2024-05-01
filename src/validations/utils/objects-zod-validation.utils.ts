@@ -3,7 +3,7 @@ import { z } from 'zod'
 const RegisterFormZod = z
 	.object({
 		username: z.string().min(3).max(20),
-		email: z.string().email().max(20),
+		email: z.string().email().min(5).max(40),
 		password: z.string().min(8).max(20),
 		confirmPassword: z.string().min(8).max(20)
 	})
@@ -13,7 +13,7 @@ const RegisterFormZod = z
 	})
 
 const LoginFormZod = z.object({
-	email: z.string().email().max(20),
+	email: z.string().email().min(5).max(40),
 	password: z.string().min(8).max(20)
 })
 

@@ -1,6 +1,6 @@
 import { LoginForm } from '@/components/page/LoginForm/LoginForm'
 
-const LoginPage = () => {
+const LoginPage = async () => {
 	return (
 		<div className='dark-blue-950 flex h-screen w-screen items-center justify-center '>
 			<LoginForm />
