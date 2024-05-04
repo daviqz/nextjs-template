@@ -10,6 +10,9 @@ export default function HomePage() {
 			<div className='mt-10'>
 				<Link href='/register'>Register</Link>
 			</div>
+			<div className='mt-10'>
+				<Link href='/overview'>Overview test</Link>
+			</div>
 		</div>
 	)
 }

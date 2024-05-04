@@ -1,10 +1,9 @@
 'use client'
-
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button, PasswordInput, TextInput } from '@mantine/core'
-import { AtIcon, LockIcon, UserIcon } from '@/components/global/SystemIcons/SystemIcons'
+import { AtIcon, LockIcon, UserIcon } from '@/components/global/SystemIcons'
 import { RegisterFormType } from '@/types/auth-types'
 import { validateRegisterForm } from '@/validations/auth.validation'
 import { fetchData } from '@/service/service'
@@ -40,7 +39,7 @@ const RegisterForm = () => {
 					console.error(error)
 				})
 				.finally(() => {
-					console.log('finally')
+					console.info('finally')
 				})
 		}
 	}

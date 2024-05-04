@@ -1,12 +1,13 @@
 'use client'
-
 import React, { FormEvent, useState } from 'react'
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import Link from 'next/link'
-import { AtIcon, LockIcon } from '@/components/global/SystemIcons/SystemIcons'
+import { useRouter } from 'next/navigation'
+import { AtIcon, LockIcon } from '@/components/global/SystemIcons'
 import { validateLoginForm } from '@/validations/auth.validation'
 import { LoginFormType } from '@/types/auth-types'
 import { fetchData } from '@/service/service'
+import { registerLoginCookie } from '@/app/actions/auth'
 
 const DEFAULT_ERROR_FIELD_VALUE = null
 const DEFAULT_LOGIN_FORM = { email: '', password: '' }
@@ -14,6 +15,7 @@ const DEFAULT_LOGIN_FORM = { email: '', password: '' }
 const LoginForm = () => {
 	const [loginForm, setLoginForm] = useState<LoginFormType>(DEFAULT_LOGIN_FORM)
 	const [errorFields, setErrorFields] = useState<Record<string, string> | null>(DEFAULT_ERROR_FIELD_VALUE)
+	const router = useRouter()
 
 	const handleChangeLoginForm = (value: string, field: string) => {
 		if (field && errorFields && errorFields.field) {
@@ -32,14 +34,17 @@ const LoginForm = () => {
 			setErrorFields(errors)
 		} else {
 			fetchData('/auth/login', loginForm)
-				.then(() => {
-					console.log('TODO')
+				.then(async (response) => {
+					if (response.token) {
+						await registerLoginCookie(response)
+						router.push('/overview')
+					}
 				})
 				.catch((error) => {
 					console.error(error)
 				})
 				.finally(() => {
-					console.log('finally')
+					console.info('finally')
 				})
 		}
 	}

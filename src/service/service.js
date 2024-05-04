@@ -1,18 +1,13 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+'use client'
+import { SystemToast } from '@/components/global/Toast'
+import { fetchDataNoToast } from '@/service/service.config'
 
 export const fetchData = async (url, body) => {
-	let configFetch = {
-		method: 'GET'
+	const response = await fetchDataNoToast(url, body)
+
+	if (response?.toast) {
+		SystemToast(response.toast.message, response.toast.type)
 	}
-	if (body) {
-		configFetch = {
-			body: JSON.stringify(body),
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}
-	}
-	const response = await fetch(`${API_URL}${url}`, configFetch)
+
 	return response
 }
