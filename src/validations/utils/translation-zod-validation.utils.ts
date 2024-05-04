@@ -1,5 +1,4 @@
-const translateValidationMessage = (err: any) => {
-	const message = err.message
+const translateValidationMessage = (message: string) => {
 	if (message === 'Invalid email') return 'Email inválido'
 	if (message === 'Expected string') return 'Este campo é obrigatório'
 	if (message === 'Too long') return 'Conteúdo muito longo'
