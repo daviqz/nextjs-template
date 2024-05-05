@@ -25,7 +25,6 @@ export const fetchDataNoToast = async (url, body) => {
 	try {
 		const response = await fetch(`${API_URL}${url}`, configFetch)
 		const data = await response.json()
-		console.log(data)
 		if (data.isExpiredToken) {
 			deleteAuthSession()
 		}
