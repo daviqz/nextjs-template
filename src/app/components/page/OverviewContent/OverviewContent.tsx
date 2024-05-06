@@ -1,5 +1,5 @@
 'use client'
-import { fetchData } from '@/service/service'
+import { fetchData } from '@/app/service/service'
 import { Button } from '@mantine/core'
 
 const privateRouteTest = () => {

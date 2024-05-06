@@ -1,8 +1,8 @@
 'use client'
 import { MantineProvider, ColorSchemeScript } from '@mantine/core'
-import { theme } from '@/theme'
+import { theme } from '@/app/theme'
 // import { theme, colorSchemeManager } from '@/theme'
-import { LightDarkModeSwitch } from '@/components/global/LightDarkModeSwitch'
+import { LightDarkModeSwitch } from '@/app/components/global/LightDarkModeSwitch'
 
 export default function LayoutProvider({ children }: { children: React.ReactNode }) {
 	return (

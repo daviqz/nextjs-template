@@ -1,4 +1,4 @@
-import LayoutProvider from '@/components/global/LayoutProvider'
+import LayoutProvider from '@/app/components/global/LayoutProvider'
 
 import '@mantine/core/styles.css'
 import './globals.css'

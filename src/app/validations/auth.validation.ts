@@ -1,4 +1,4 @@
-import { LoginFormType, RegisterFormType } from '@/types/auth-types'
+import { LoginFormType, RegisterFormType } from '@/app/types/auth-types'
 import { LoginFormZod, RegisterFormZod } from './utils/objects-zod-validation.utils'
 import { parseZodResponse } from './utils/parse-response-zod-validation.utils'
 

@@ -1,4 +1,4 @@
-import { LoginForm } from '@/components/page/LoginForm/LoginForm'
+import { LoginForm } from '@/app/components/page/LoginForm/LoginForm'
 
 const LoginPage = async () => {
 	return (

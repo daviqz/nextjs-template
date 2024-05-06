@@ -3,11 +3,11 @@ import React, { FormEvent, useState } from 'react'
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { AtIcon, LockIcon } from '@/components/global/SystemIcons'
-import { validateLoginForm } from '@/validations/auth.validation'
-import { LoginFormType } from '@/types/auth-types'
-import { fetchData } from '@/service/service'
-import { registerLoginCookie } from '@/app/actions/auth'
+import { AtIcon, LockIcon } from '@/app/components/global/SystemIcons'
+import { validateLoginForm } from '@/app/validations/auth.validation'
+import { LoginFormType } from '@/app/types/auth-types'
+import { fetchData } from '@/app/service/service'
+import { createAuthSessionAction } from '@/app/actions/auth'
 
 const DEFAULT_ERROR_FIELD_VALUE = null
 const DEFAULT_LOGIN_FORM = { email: '', password: '' }
@@ -36,7 +36,7 @@ const LoginForm = () => {
 			fetchData('/auth/login', loginForm)
 				.then(async (response) => {
 					if (response.token) {
-						await registerLoginCookie(response)
+						await createAuthSessionAction(response)
 						router.push('/overview')
 					}
 				})

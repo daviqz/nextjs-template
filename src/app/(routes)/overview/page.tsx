@@ -1,5 +1,4 @@
-import { OverviewContent } from '@/components/page/OverviewContent/OverviewContent'
-import { withAuth } from '../lib/private-route'
+import { OverviewContent } from '@/app/components/page/OverviewContent/OverviewContent'
 
 const OverviewPage = async () => {
 	return (
@@ -9,4 +8,4 @@ const OverviewPage = async () => {
 	)
 }
 
-export default withAuth(OverviewPage)
+export default OverviewPage

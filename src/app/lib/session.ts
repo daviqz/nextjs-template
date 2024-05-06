@@ -30,7 +30,7 @@ const updateAuthSession = async () => {
 	})
 }
 
-const deleteAuthSession = () => {
+const deleteAuthSession = async () => {
 	cookies().delete('authSession')
 }
 
