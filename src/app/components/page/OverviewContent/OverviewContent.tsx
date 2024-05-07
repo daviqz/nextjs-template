@@ -1,4 +1,5 @@
 'use client'
+import { deleteAuthSessionAction } from '@/app/actions/auth'
 import { fetchData } from '@/app/service/service'
 import { Button } from '@mantine/core'
 
@@ -15,11 +16,16 @@ const privateRouteTest = () => {
 		})
 }
 
+const logout = () => {
+	deleteAuthSessionAction()
+}
+
 const OverviewContent = () => {
 	return (
 		<div className='flex h-full w-full flex-col items-center justify-center'>
 			<h1 className='text-4xl font-bold'>Overview</h1>
 			<Button onClick={privateRouteTest}>Chama rota privada</Button>
+			<Button onClick={logout}>Deslogar</Button>
 		</div>
 	)
 }

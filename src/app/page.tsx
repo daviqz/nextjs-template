@@ -11,7 +11,7 @@ export default function HomePage() {
 				<Link href='/register'>Register</Link>
 			</div>
 			<div className='mt-10'>
-				<Link href='/overview'>Overview test</Link>
+				<Link href='/overview'>Overview (authenticated)</Link>
 			</div>
 		</div>
 	)
