@@ -1,6 +1,6 @@
 'use server'
 import { createAuthSession, deleteAuthSession, updateAuthSession, getAuthSession } from '@/app/lib/session'
-import { AuthType } from '@/app/types/auth-types'
+import { AuthType } from '@/app/types/auth.types'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 

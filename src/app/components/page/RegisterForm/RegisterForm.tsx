@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import { AtIcon, LockIcon, UserIcon } from '@/app/components/global/SystemIcons'
-import { RegisterFormType } from '@/app/types/auth-types'
+import { RegisterFormType } from '@/app/types/auth.types'
 import { validateRegisterForm } from '@/app/validations/auth.validation'
 import { fetchData } from '@/app/service/service'
 

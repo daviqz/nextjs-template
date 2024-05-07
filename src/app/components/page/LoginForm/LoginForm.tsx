@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { AtIcon, LockIcon } from '@/app/components/global/SystemIcons'
 import { validateLoginForm } from '@/app/validations/auth.validation'
-import { LoginFormType } from '@/app/types/auth-types'
+import { LoginFormType } from '@/app/types/auth.types'
 import { fetchData } from '@/app/service/service'
 import { createAuthSessionAction } from '@/app/actions/auth'
 
