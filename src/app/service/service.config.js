@@ -1,7 +1,5 @@
 'use server'
-import { redirect } from 'next/navigation'
-import { getAuthSessionAction, deleteAuthSessionAction } from '../actions/auth'
-import { revalidatePath } from 'next/cache'
+import { getAuthSessionAction } from '../actions/auth'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -26,10 +24,6 @@ export const fetchDataNoToast = async (url, body) => {
 	}
 	const response = await fetch(`${API_URL}${url}`, configFetch)
 	const data = await response.json()
-	if (data.isExpiredToken) {
-		await deleteAuthSessionAction()
-		revalidatePath('/login')
-		redirect('/login')
-	}
+
 	return data
 }
