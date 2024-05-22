@@ -1,10 +1,17 @@
 'use server'
+
 import { getAuthSessionAction } from '../actions/auth'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
-export const fetchDataNoToast = async (url, body) => {
-	let configFetch = {
+type ConfigFetchType = {
+	method: string
+	headers: Record<string, string>
+	body?: string
+}
+
+export const fetchDataNoToast = async (url: string, body?: object) => {
+	let configFetch: ConfigFetchType = {
 		method: 'GET',
 		headers: {}
 	}
@@ -17,6 +24,7 @@ export const fetchDataNoToast = async (url, body) => {
 			}
 		}
 	}
+
 	const authSession = await getAuthSessionAction()
 	if (authSession?.token) {
 		const token = authSession.token

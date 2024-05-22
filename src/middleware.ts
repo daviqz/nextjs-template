@@ -1,29 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getAuthSessionAction } from './app/actions/auth'
+import createIntlMiddleware from 'next-intl/middleware'
+import { locales } from './config/i18n-config/i18n.config'
 
-// 1. Specify protected and public routes
-const publicRoutes = ['/login', '/register', '/']
+const publicPages = ['/login', '/register', '/']
+const publicPagesCantAccessAfterLogin = ['/login', '/register', '/']
+
+const intlMiddleware = createIntlMiddleware({
+	locales,
+	localePrefix: 'as-needed',
+	defaultLocale: 'pt'
+})
 
 export default async function middleware(req: NextRequest) {
-	// 2. Check if the current route is protected or public
-	const path = req.nextUrl.pathname
-	const isPublicRoute = publicRoutes.includes(path)
+	const cleanPathname = req.nextUrl.pathname.replace(/^\/[a-z]{2}(\/|$)/, '/')
+	const isPublicPage = publicPages.includes(cleanPathname)
+	const isPublicCanAccesAfterLogin = !publicPagesCantAccessAfterLogin.includes(cleanPathname)
 	const authSession = await getAuthSessionAction()
-
-	// 3. Redirect to /login if the user is not authenticated
-	if (!isPublicRoute && !authSession?.token && !path.startsWith('/login')) {
+	if (!isPublicPage && !authSession?.token && !cleanPathname.startsWith('/login')) {
 		return NextResponse.redirect(new URL('/login', req.nextUrl))
 	}
 
-	// 4. Redirect to /overview if the user is authenticated
-	if (isPublicRoute && authSession?.token && !req.nextUrl.pathname.startsWith('/overview')) {
+	if (isPublicPage && authSession?.token && !isPublicCanAccesAfterLogin) {
 		return NextResponse.redirect(new URL('/overview', req.nextUrl))
 	}
 
-	return NextResponse.next()
+	return intlMiddleware(req)
 }
 
-// Routes Middleware should not run on
 export const config = {
 	matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)']
 }

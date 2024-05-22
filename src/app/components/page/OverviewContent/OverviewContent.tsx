@@ -1,7 +1,7 @@
 'use client'
-import { deleteAuthSessionAction } from '@/app/actions/auth'
 import { fetchData } from '@/app/service/service'
 import { Button } from '@mantine/core'
+import { deleteAuthSessionAction } from '@/app/actions/auth'
 
 const privateRouteTest = () => {
 	fetchData('/account/protected')

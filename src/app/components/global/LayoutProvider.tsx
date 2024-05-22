@@ -3,6 +3,7 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core'
 import { theme } from '@/app/theme'
 // import { theme, colorSchemeManager } from '@/theme'
 import { LightDarkModeSwitch } from '@/app/components/global/LightDarkModeSwitch'
+import LocaleSwitcher from './LocaleSwitcher/LocaleSwitcher'
 
 export default function LayoutProvider({ children }: { children: React.ReactNode }) {
 	return (
@@ -15,6 +16,7 @@ export default function LayoutProvider({ children }: { children: React.ReactNode
 				{/* <MantineProvider colorSchemeManager={colorSchemeManager} defaultColorScheme='auto'> */}
 				<MantineProvider theme={theme} defaultColorScheme='auto'>
 					<LightDarkModeSwitch />
+					<LocaleSwitcher />
 					{children}
 				</MantineProvider>
 			</body>

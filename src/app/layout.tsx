@@ -1,21 +1,11 @@
-import LayoutProvider from '@/app/components/global/LayoutProvider'
+import { ReactNode } from 'react'
 
-import '@mantine/core/styles.css'
-import './globals.css'
-import { Toaster } from 'sonner'
-
-export const metadata = {
-	title: 'Next.js Template',
-	description: 'This is a Next.js template!'
+type Props = {
+	children: ReactNode
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-	return (
-		<html>
-			<LayoutProvider>
-				{children}
-				<Toaster richColors position='bottom-right' />
-			</LayoutProvider>
-		</html>
-	)
+// Since we have a `not-found.tsx` page on the root, a layout file
+// is required, even if it's just passing children through.
+export default function RootLayout({ children }: Props) {
+	return children
 }
